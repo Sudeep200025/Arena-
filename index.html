@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Arena Animation GTB Nagar – Delhi's premier institute for animation, VFX, graphic design, and multimedia courses." />
+  <title>Arena Animation GTB Nagar | Where Creativity Meets Career</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --ink:        #0a0a0f;
+      --paper:      #f5f2ec;
+      --cream:      #faf8f4;
+      --accent:     #e8421a;
+      --accent2:    #f5a623;
+      --teal:       #00c4b4;
+      --muted:      #6b6660;
+      --border:     #e0dbd2;
+
+      --ff-head:    'Bebas Neue', sans-serif;
+      --ff-body:    'DM Sans', sans-serif;
+      --ff-mono:    'Space Mono', monospace;
+
+      --nav-h:      72px;
+      --max-w:      1280px;
+      --radius:     4px;
+      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+
+    /* ─── UTILITY ────────────────────────────────────────────── */
+    .container { width: min(100%, var(--max-w)); margin-inline: auto; padding-inline: clamp(1rem, 4vw, 3rem); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+    .tag {
+      display: inline-block;
+      font-family: var(--ff-mono);
+      font-size: 0.68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border: 1.5px solid currentColor;
+      border-radius: 2px;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    .nav {
+      position: fixed; inset: 0 0 auto;
+      height: var(--nav-h);
+      z-index: 900;
+      background: rgba(245,242,236,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1.5px solid var(--border);
+      display: flex; align-items: center;
+    }
+    .nav__inner {
+      width: 100%; display: flex; align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav__logo {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .nav__logo img {
+      height: 44px; width: auto;
+      object-fit: contain;
+    }
+    .nav__brand {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+    .nav__brand-top {
+      font-family: var(--ff-head);
+      font-size: 1.35rem;
+      letter-spacing: .04em;
+      color: var(--accent);
+
+    }
+    .nav__brand-top {
+  font-weight: bold;
+}
+
+.highlight {
+  color: black;              /* text color */
+  background-color: yellow;  /* highlight color */
+  padding: 2px 6px;
+  border-radius: 3px;        /* optional for smooth look */
+}
+    .nav__brand-sub {
+      font-family: var(--ff-mono);
+      font-size: 0.6rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+    .nav__links {
+      display: flex; gap: 2rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+    }
+    .nav__links a {
+      position: relative;
+      padding-bottom: 2px;
+      transition: color var(--transition);
+    }
+    .nav__links a::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; right: 100%;
+      height: 2px; background: var(--accent);
+      transition: right var(--transition);
+    }
+    .nav__links a:hover { color: var(--accent); }
+    .nav__links a:hover::after { right: 0; }
+    .nav__cta {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.4rem;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .nav__cta:hover { background: #c93614; transform: translateY(-1px); }
+    .nav__hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      padding: 6px;
+      border-radius: var(--radius);
+    }
+    .nav__hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .nav__hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav__hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .nav__mobile {
+      display: none;
+      position: fixed;
+      inset: var(--nav-h) 0 0;
+      background: var(--cream);
+      flex-direction: column;
+      padding: 2rem 2rem 3rem;
+      gap: 0;
+      z-index: 890;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .nav__mobile.is-open { transform: translateX(0); }
+    .nav__mobile a {
+      display: block;
+      padding: 1rem 0;
+      font-size: 1.6rem;
+      font-family: var(--ff-head);
+      letter-spacing: .06em;
+      border-bottom: 1px solid var(--border);
+      transition: color var(--transition), padding-left var(--transition);
+    }
+    .nav__mobile a:hover { color: var(--accent); padding-left: 0.5rem; }
+    .nav__mobile .nav__cta {
+      margin-top: 1.5rem;
+      display: inline-block;
+      text-align: center;
+      padding: 0.85rem 2rem;
+      font-size: 0.95rem;
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__left {
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: clamp(3rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 8vw, 7rem) clamp(1rem, 4vw, 3rem);
+      position: relative; z-index: 2;
+    }
+    .hero__eyebrow {
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+    .hero__heading {
+      font-family: var(--ff-head);
+      font-size: clamp(3.5rem, 7vw, 7.5rem);
+      line-height: .95;
+      letter-spacing: .01em;
+      margin-bottom: 1.5rem;
+    }
+    .hero__heading em {
+      font-style: normal;
+      color: var(--accent);
+      display: block;
+    }
+    .hero__sub {
+      font-size: clamp(1rem, 1.3vw, 1.15rem);
+      color: var(--muted);
+      max-width: 44ch;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 0.92rem;
+      letter-spacing: .07em; text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-primary:hover { background: #c93614; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,66,26,0.3); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 2px solid var(--ink); color: var(--ink);
+      font-weight: 600; font-size: 0.92rem;
+      letter-spacing: .07em; text-transform: uppercase;
+      padding: 0.83rem 1.8rem;
+      border-radius: var(--radius);
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+    .btn-outline:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+    .hero__stats {
+      display: flex; gap: 2.5rem; margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1.5px solid var(--border);
+    }
+    .stat__num {
+      font-family: var(--ff-head);
+      font-size: 2.8rem;
+      line-height: 1;
+      color: var(--accent);
+    }
+    .stat__label {
+      font-size: 0.78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-family: var(--ff-mono);
+      margin-top: 0.2rem;
+    }
+
+    .hero__right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__img-wrap {
+      position: absolute; inset: 0;
+    }
+    .hero__img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 8s ease;
+    }
+    .hero__img-wrap:hover img { transform: scale(1.04); }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(232,66,26,0.15) 0%, rgba(0,196,180,0.1) 100%);
+    }
+    /* Diagonal cut */
+    .hero__right::before {
+      content: '';
+      position: absolute; left: -60px; top: 0; bottom: 0;
+      width: 120px;
+      background: var(--paper);
+      transform: skewX(-4deg);
+      z-index: 3;
+    }
+    /* Floating badge */
+    .hero__badge {
+      position: absolute;
+      bottom: 2.5rem; left: 3rem;
+      z-index: 10;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 6px;
+      padding: 0.9rem 1.2rem;
+      min-width: 160px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .hero__badge-label {
+      font-family: var(--ff-mono);
+      font-size: 0.6rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.25rem;
+    }
+    .hero__badge-val {
+      font-family: var(--ff-head);
+      font-size: 1.4rem;
+      letter-spacing: .04em;
+    }
+    .hero__badge-sub {
+      font-size: 0.72rem;
+      color: #aaa;
+      margin-top: 0.1rem;
+    }
+
+    /* Noise texture overlay */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1;
+    }
+
+    /* ─── MARQUEE ────────────────────────────────────────────── */
+    .marquee-bar {
+      background: var(--accent);
+      color: #fff;
+      overflow: hidden;
+      padding: 0.7rem 0;
+      position: relative; z-index: 10;
+    }
+    .marquee-track {
+      display: flex;
+      animation: marquee 22s linear infinite;
+      width: max-content;
+    }
+    .marquee-track span {
+      white-space: nowrap;
+      font-family: var(--ff-head);
+      font-size: 1.05rem;
+      letter-spacing: .1em;
+      padding-right: 3rem;
+    }
+    .marquee-track .dot { color: var(--accent2); margin-right: 3rem; font-size: 1.4rem; line-height: 1; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ─── SECTION COMMONS ────────────────────────────────────── */
+    section { padding-block: clamp(4rem, 8vw, 7rem); }
+    .section-label {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .section-label::before { content: ''; display: block; width: 28px; height: 2px; background: var(--accent); }
+    .section-title {
+      font-family: var(--ff-head);
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      line-height: 1.0;
+      letter-spacing: .01em;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 55ch;
+      line-height: 1.75;
+    }
+    .section-head { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+
+    /* ─── WHY US ─────────────────────────────────────────────── */
+    .why { background: var(--ink); color: var(--paper); }
+    .why .section-label { color: var(--teal); }
+    .why .section-label::before { background: var(--teal); }
+    .why .section-desc { color: #aaa; }
+    .why__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5px;
+      background: #222;
+      border: 1.5px solid #222;
+      margin-top: 3rem;
+    }
+    .why-card {
+      background: var(--ink);
+      padding: 2.5rem 2rem;
+      transition: background var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card:hover { background: #111; }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 3px; width: 0;
+      background: var(--teal);
+      transition: width var(--transition);
+    }
+    .why-card:hover::before { width: 100%; }
+    .why-card__icon {
+      font-size: 2.2rem; margin-bottom: 1.25rem;
+      display: block;
+    }
+    .why-card__num {
+      font-family: var(--ff-head);
+      font-size: 3.5rem;
+      color: #1a1a24;
+      position: absolute;
+      top: 1rem; right: 1.25rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .why-card__title {
+      font-family: var(--ff-head);
+      font-size: 1.4rem;
+      letter-spacing: .04em;
+      margin-bottom: 0.6rem;
+      color: var(--paper);
+    }
+    .why-card__desc { font-size: 0.9rem; color: #999; line-height: 1.7; }
+
+    /* ─── COURSES ────────────────────────────────────────────── */
+    .courses { background: var(--cream); }
+    .courses__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .course-card {
+      background: var(--paper);
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+    .course-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+    .course-card__thumb {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+    }
+    .course-card__thumb img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .course-card:hover .course-card__thumb img { transform: scale(1.06); }
+    .course-card__badge {
+      position: absolute; top: 0.75rem; left: 0.75rem;
+      background: var(--accent); color: #fff;
+      font-family: var(--ff-mono);
+      font-size: 0.6rem; letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+    }
+    .course-card__body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .course-card__title {
+      font-family: var(--ff-head);
+      font-size: 1.4rem;
+      letter-spacing: .03em;
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+    .course-card__desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
+    .course-card__meta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--ff-mono);
+      font-size: 0.68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .course-card__meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .course-card__link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 1rem;
+      font-size: 0.82rem; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      color: var(--accent);
+      transition: gap var(--transition);
+    }
+    .course-card__link:hover { gap: 0.7rem; }
+
+    /* ─── GALLERY ────────────────────────────────────────────── */
+    .gallery { background: var(--paper); }
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 0.75rem;
+    }
+    .gal-item {
+      overflow: hidden; border-radius: 4px;
+      position: relative;
+    }
+    .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .gal-item:hover img { transform: scale(1.05); }
+    .gal-item:nth-child(1) { grid-column: span 7; grid-row: span 2; aspect-ratio: unset; min-height: 360px; }
+    .gal-item:nth-child(2) { grid-column: span 5; min-height: 170px; }
+    .gal-item:nth-child(3) { grid-column: span 5; min-height: 170px; }
+    .gal-item:nth-child(4) { grid-column: span 4; min-height: 200px; }
+    .gal-item:nth-child(5) { grid-column: span 4; min-height: 200px; }
+    .gal-item:nth-child(6) { grid-column: span 4; min-height: 200px; }
+
+    /* ─── ABOUT ──────────────────────────────────────────────── */
+    .about { background: var(--cream); overflow: hidden; }
+    .about__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+    }
+    .about__visual {
+      position: relative;
+    }
+    .about__img-main {
+      border-radius: 6px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    .about__img-main img { width: 100%; height: 100%; object-fit: cover; }
+    .about__img-accent {
+      position: absolute;
+      bottom: -2rem; right: -2rem;
+      width: 55%;
+      border-radius: 6px; overflow: hidden;
+      border: 6px solid var(--cream);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+      aspect-ratio: 4/3;
+    }
+    .about__img-accent img { width: 100%; height: 100%; object-fit: cover; }
+    .about__years {
+      position: absolute; top: 2rem; left: -1.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 1.25rem 1.5rem;
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(232,66,26,0.35);
+    }
+    .about__years-num {
+      font-family: var(--ff-head);
+      font-size: 2.8rem; line-height: 1;
+    }
+    .about__years-label {
+      font-family: var(--ff-mono);
+      font-size: 0.58rem; letter-spacing: .18em; text-transform: uppercase; opacity: .85;
+    }
+    .about__content {}
+    .about__list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.85rem; }
+    .about__list-item {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.95rem; color: var(--muted); line-height: 1.6;
+    }
+    .about__list-item::before {
+      content: '→';
+      color: var(--accent); font-weight: 700;
+      flex-shrink: 0; margin-top: 0.1em;
+    }
+    .about__actions { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ─── TESTIMONIALS ───────────────────────────────────────── */
+    .testimonials { background: var(--ink); color: var(--paper); }
+    .testimonials .section-label { color: var(--accent2); }
+    .testimonials .section-label::before { background: var(--accent2); }
+    .testimonials .section-title { color: var(--paper); }
+    .testi__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .testi-card {
+      background: #111;
+      border: 1.5px solid #2a2a2a;
+      border-radius: 6px;
+      padding: 2rem;
+      position: relative;
+      transition: border-color var(--transition);
+    }
+    .testi-card:hover { border-color: var(--accent2); }
+    .testi-card__quote {
+      font-size: 3.5rem;
+      line-height: 1;
+      color: var(--accent2);
+      font-family: Georgia, serif;
+      margin-bottom: 0.5rem;
+      opacity: 0.6;
+    }
+    .testi-card__text {
+      font-size: 0.93rem; color: #ccc; line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .testi-card__author { display: flex; align-items: center; gap: 0.9rem; }
+    .testi-card__avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #333;
+    }
+    .testi-card__name { font-weight: 700; font-size: 0.9rem; }
+    .testi-card__role { font-size: 0.72rem; color: #888; font-family: var(--ff-mono); letter-spacing: .08em; }
+    .testi-card__stars { color: var(--accent2); font-size: 0.8rem; letter-spacing: .1em; margin-bottom: 0.75rem; }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    .contact { background: var(--paper); }
+    .contact__inner {
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start;
+    }
+    .contact__info {}
+    .contact__info-items { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-info-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .contact-info-item__icon {
+      width: 44px; height: 44px; border-radius: 4px;
+      background: var(--accent); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-info-item__label {
+      font-family: var(--ff-mono); font-size: 0.65rem;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .contact-info-item__val { font-size: 0.95rem; font-weight: 500; }
+
+    .contact__map {
+      margin-top: 1.75rem;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+      line-height: 0;
+    }
+    .contact__map iframe {
+      width: 100%;
+      height: 300px;
+      display: block;
+    }
+
+    .contact__form { background: var(--cream); border: 1.5px solid var(--border); border-radius: 6px; padding: 2.5rem; }
+    .form__title { font-family: var(--ff-head); font-size: 1.8rem; letter-spacing: .04em; margin-bottom: 0.5rem; }
+    .form__sub { font-size: 0.88rem; color: var(--muted); margin-bottom: 2rem; }
+    .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form__group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form__label { font-size: 0.78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+    .form__input, .form__select, .form__textarea {
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--paper);
+      font-family: var(--ff-body);
+      font-size: 0.92rem;
+      color: var(--ink);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      width: 100%;
+    }
+    .form__input:focus, .form__select:focus, .form__textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(232,66,26,0.12);
+    }
+    .form__textarea { resize: vertical; min-height: 110px; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    .footer { background: var(--ink); color: #aaa; padding-block: 3rem 2rem; }
+    .footer__inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid #222;
+      margin-bottom: 2rem;
+    }
+    .footer__brand {}
+    .footer__logo { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1rem; }
+    .footer__logo img { height: 36px; }
+    .footer__logo-text {
+      font-family: var(--ff-head); font-size: 1.2rem;
+      letter-spacing: .04em; color: var(--paper);
+    }
+    .footer__tagline { font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .footer__social { display: flex; gap: 0.75rem; }
+    .footer__social a {
+      width: 36px; height: 36px; border-radius: var(--radius);
+      border: 1px solid #333;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; color: #aaa;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+    .footer__social a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .footer__col-title {
+      font-family: var(--ff-head); font-size: 1rem;
+      letter-spacing: .1em; color: var(--paper);
+      margin-bottom: 1.25rem; text-transform: uppercase;
+    }
+    .footer__links { display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer__links a { font-size: 0.88rem; transition: color var(--transition); }
+    .footer__links a:hover { color: var(--accent); }
+    .footer__bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      font-size: 0.78rem;
+    }
+    .footer__bottom a { transition: color var(--transition); }
+    .footer__bottom a:hover { color: var(--accent); }
+
+    /* ─── SCROLL REVEAL ANIMATION ─────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── FAQ ────────────────────────────────────────────────── */
+    .faq {
+      background: #000;
+      padding-block: clamp(4rem, 8vw, 7rem);
+    }
+    .faq__head {
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    }
+    .faq__label {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #f5c800;
+      margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .faq__label::before {
+      content: ''; display: block;
+      width: 28px; height: 2px;
+      background: #f5c800;
+    }
+    .faq__title {
+      font-family: var(--ff-head);
+      font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+      line-height: .98;
+      letter-spacing: .01em;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .faq__title em {
+      font-style: normal;
+      color: #f5c800;
+      display: block;
+    }
+    .faq__desc {
+      font-size: 1rem;
+      color: #888;
+      max-width: 50ch;
+      line-height: 1.7;
+    }
+
+    .faq__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1.5px solid #1e1e1e;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .faq-item {
+      border-bottom: 1.5px solid #1e1e1e;
+    }
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-item__q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.4rem 1.75rem;
+      background: #000;
+      color: #f5c800;
+      font-family: var(--ff-body);
+      font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+      font-weight: 600;
+      letter-spacing: .01em;
+      text-align: left;
+      cursor: pointer;
+      transition: background var(--transition), padding-left var(--transition);
+      line-height: 1.4;
+    }
+    .faq-item__q:hover {
+      background: #0d0d0d;
+      padding-left: 2.15rem;
+    }
+    .faq-item__q[aria-expanded="true"] {
+      background: #f5c800;
+      color: #000;
+      padding-left: 1.75rem;
+    }
+
+    .faq-item__icon {
+      flex-shrink: 0;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: 1.5px solid currentColor;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 300;
+      line-height: 1;
+      transition: transform var(--transition);
+    }
+    .faq-item__q[aria-expanded="true"] .faq-item__icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-item__a {
+      background: #fff;
+      color: #000;
+      padding: 0 1.75rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1),
+                  padding 0.3s ease;
+    }
+    .faq-item__a:not([hidden]) {
+      padding: 1.4rem 1.75rem 1.6rem;
+      max-height: 600px;
+    }
+    .faq-item__a[hidden] { display: block !important; }
+
+    .faq-item__a p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #111;
+    }
+    .faq-item__a strong { color: #000; font-weight: 700; }
+    .faq-item__a em { color: #333; font-style: italic; }
+
+    .faq-item__list {
+      list-style: none;
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .faq-item__list li {
+      font-size: 0.93rem;
+      color: #111;
+      padding-left: 1.3rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .faq-item__list li::before {
+      content: '▸';
+      position: absolute; left: 0;
+      color: #e8421a;
+      font-size: 0.75rem;
+      top: 0.15em;
+    }
+
+    /* ─── FOCUS STATES ───────────────────────────────────────── */
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .about__inner { grid-template-columns: 1fr; }
+      .about__visual { order: -1; max-width: 480px; }
+      .about__img-accent { right: 0; }
+      .about__years { left: 0; }
+      .contact__inner { grid-template-columns: 1fr; }
+      .footer__inner { grid-template-columns: 1fr 1fr; }
+      .gal-item:nth-child(1) { grid-column: span 12; min-height: 300px; }
+      .gal-item:nth-child(2), .gal-item:nth-child(3) { grid-column: span 6; }
+      .gal-item:nth-child(4), .gal-item:nth-child(5), .gal-item:nth-child(6) { grid-column: span 4; }
+    }
+    @media (max-width: 768px) {
+      .nav__links, .nav__cta { display: none; }
+      .nav__hamburger { display: flex; }
+      .nav__mobile { display: flex; }
+      .hero { grid-template-columns: 1fr; min-height: unset; }
+      .hero__right { display: none; }
+      .hero__left { padding-block: 3rem; }
+      .hero__stats { flex-wrap: wrap; gap: 1.5rem; }
+      .gal-item:nth-child(1), .gal-item:nth-child(2), .gal-item:nth-child(3) { grid-column: span 12; }
+      .gal-item:nth-child(4), .gal-item:nth-child(5), .gal-item:nth-child(6) { grid-column: span 6; }
+      .footer__inner { grid-template-columns: 1fr; gap: 2rem; }
+      .form__row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .courses__grid { grid-template-columns: 1fr; }
+      .gal-item:nth-child(4), .gal-item:nth-child(5), .gal-item:nth-child(6) { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ════════════════════════════════════════════════ -->
+  <header role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <a class="nav__logo" href="#home" aria-label="Arena Animation GTB Nagar – Home">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/0/08/Arena_Animation_logo.png/250px-Arena_Animation_logo.png"
+            alt="Arena Animation logo"
+            width="120" height="44"
+            loading="eager"
+            onerror="this.style.display='none'"
+          />
+         <div class="nav__brand">
+  <span class="nav__brand-top">
+    ARENA <span class="highlight">ANIMATION</span>
+  </span>
+  <span class="nav__brand-sub">GTB Nagar, Delhi</span>
+</div>
+        </a>
+
+        <ul class="nav__links" role="list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#faq">FAQ</a></li>
+
+        <a href="#contact" class="nav__cta" aria-label="Enroll now">Enroll Now</a>
+
+        <button
+          class="nav__hamburger"
+          aria-label="Open mobile menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          id="hamburger-btn"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile drawer -->
+    <nav id="mobile-menu" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
+      <a href="#home"    onclick="closeMobileMenu()">Home</a>
+      <a href="#courses" onclick="closeMobileMenu()">Courses</a>
+      <a href="#about"   onclick="closeMobileMenu()">About</a>
+      <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
+      <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+      <a href="#faq"     onclick="closeMobileMenu()">FAQ</a>
+      <a href="#contact" class="nav__cta" onclick="closeMobileMenu()">Enroll Now →</a>
+    </nav>
+  </header>
+
+  <main id="home">
+
+    <!-- ═══ HERO ════════════════════════════════════════════════ -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__left container" style="padding-left:clamp(1rem,4vw,3rem)">
+        <span class="tag hero__eyebrow">Delhi's #1 Animation Institute</span>
+        <h1 class="hero__heading" id="hero-heading">
+          Build Your<br>
+          <em>Creative</em><br>
+          Future
+        </h1>
+        <p class="hero__sub">
+          Arena Animation GTB Nagar transforms creative passion into industry-ready skills — with hands-on training in Animation, VFX, UI/UX, Graphic Design & more.
+        </p>
+        <div class="hero__actions">
+          <a href="#courses" class="btn-primary">Explore Courses →</a>
+          <a href="#about"   class="btn-outline">About Us</a>
+        </div>
+        <div class="hero__stats" role="list" aria-label="Key statistics">
+          <div role="listitem">
+            <div class="stat__num">5000+</div>
+            <div class="stat__label">Alumni</div>
+          </div>
+          <div role="listitem">
+            <div class="stat__num">15+</div>
+            <div class="stat__label">Courses</div>
+          </div>
+          <div role="listitem">
+            <div class="stat__num">97%</div>
+            <div class="stat__label">Placement</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero__right" aria-hidden="true">
+        <div class="hero__img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1400&q=80&auto=format&fit=crop"
+            alt="Animation student working at a creative workstation"
+            loading="eager"
+            width="700" height="900"
+          />
+          <div class="hero__overlay"></div>
+        </div>
+        <div class="hero__badge" aria-label="NAAC Accredited Institute">
+          <div class="hero__badge-label">Recognised By</div>
+          <div class="hero__badge-val">ARENA</div>
+          <div class="hero__badge-sub">Aptech Ltd. Certified Centre</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ MARQUEE ══════════════════════════════════════════════ -->
+    <div class="marquee-bar" aria-hidden="true" role="presentation">
+      <div class="marquee-track">
+        <span>Animation</span><span class="dot">✦</span>
+        <span>VFX &amp; Motion Graphics</span><span class="dot">✦</span>
+        <span>Graphic Design</span><span class="dot">✦</span>
+        <span>UI / UX Design</span><span class="dot">✦</span>
+        <span>3D Modeling</span><span class="dot">✦</span>
+        <span>Web Design</span><span class="dot">✦</span>
+        <span>Digital Marketing</span><span class="dot">✦</span>
+        <span>Photography</span><span class="dot">✦</span>
+        <!-- duplicate for seamless loop -->
+        <span>Animation</span><span class="dot">✦</span>
+        <span>VFX &amp; Motion Graphics</span><span class="dot">✦</span>
+        <span>Graphic Design</span><span class="dot">✦</span>
+        <span>UI / UX Design</span><span class="dot">✦</span>
+        <span>3D Modeling</span><span class="dot">✦</span>
+        <span>Web Design</span><span class="dot">✦</span>
+        <span>Digital Marketing</span><span class="dot">✦</span>
+        <span>Photography</span><span class="dot">✦</span>
+      </div>
+    </div>
+
+    <!-- ═══ WHY US ════════════════════════════════════════════════ -->
+    <section class="why" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Why Choose Us</p>
+          <h2 class="section-title" id="why-heading">Crafted for the<br>Creative Industry</h2>
+          <p class="section-desc">We don't just teach software — we build careers. Every programme at Arena GTB Nagar is designed around real-world industry demands.</p>
+        </div>
+        <div class="why__grid" role="list">
+          <article class="why-card reveal" role="listitem">
+            <span class="why-card__num" aria-hidden="true">01</span>
+            <span class="why-card__icon" aria-hidden="true">🎓</span>
+            <h3 class="why-card__title">Industry Mentors</h3>
+            <p class="why-card__desc">Learn directly from working professionals in animation studios, gaming companies, and top design agencies.</p>
+          </article>
+          <article class="why-card reveal reveal-delay-1" role="listitem">
+            <span class="why-card__num" aria-hidden="true">02</span>
+            <span class="why-card__icon" aria-hidden="true">💻</span>
+            <h3 class="why-card__title">State-of-Art Labs</h3>
+            <p class="why-card__desc">High-performance workstations with the latest versions of Maya, Adobe Suite, Blender, After Effects & more.</p>
+          </article>
+          <article class="why-card reveal reveal-delay-2" role="listitem">
+            <span class="why-card__num" aria-hidden="true">03</span>
+            <span class="why-card__icon" aria-hidden="true">🎯</span>
+            <h3 class="why-card__title">Project-Based Learning</h3>
+            <p class="why-card__desc">Build a portfolio that speaks louder than certificates. Every module ends with a real client-grade project.</p>
+          </article>
+          <article class="why-card reveal reveal-delay-3" role="listitem">
+            <span class="why-card__num" aria-hidden="true">04</span>
+            <span class="why-card__icon" aria-hidden="true">🤝</span>
+            <h3 class="why-card__title">Placement Support</h3>
+            <p class="why-card__desc">Dedicated placement cell with tie-ups with 200+ studios across India. 97% of graduates get placed within 3 months.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ COURSES ══════════════════════════════════════════════ -->
+    <section class="courses" id="courses" aria-labelledby="courses-heading">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Our Programmes</p>
+          <h2 class="section-title" id="courses-heading">Choose Your<br>Creative Path</h2>
+          <p class="section-desc">From 6-month short programmes to 2-year career courses — built for every creative aspiration and timeline.</p>
+        </div>
+        <div class="courses__grid">
+
+          <article class="course-card reveal">
+            <div class="course-card__thumb">
+              <img
+                src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=75&auto=format&fit=crop"
+                alt="3D animation characters on a computer screen"
+                loading="lazy" width="600" height="338"
+              />
+              <span class="course-card__badge">Flagship</span>
+            </div>
+            <div class="course-card__body">
+              <h3 class="course-card__title">Animation & VFX</h3>
+              <p class="course-card__desc">Master 2D/3D animation, character rigging, compositing and visual effects using Maya, Blender & After Effects.</p>
+              <div class="course-card__meta">
+                <span>⏱ 18 Months</span>
+                <span>📅 Weekend / Weekday</span>
+              </div>
+              <a href="#contact" class="course-card__link">Apply Now →</a>
+            </div>
+          </article>
+
+          <article class="course-card reveal reveal-delay-1">
+            <div class="course-card__thumb">
+              <img
+                src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&q=75&auto=format&fit=crop"
+                alt="UI UX design wireframes on tablet and screen"
+                loading="lazy" width="600" height="338"
+              />
+              <span class="course-card__badge">High Demand</span>
+            </div>
+            <div class="course-card__body">
+              <h3 class="course-card__title">UI/UX Design</h3>
+              <p class="course-card__desc">Design beautiful, user-centred digital products using Figma, Adobe XD, prototyping, and usability research methods.</p>
+              <div class="course-card__meta">
+                <span>⏱ 9 Months</span>
+                <span>📅 Weekend / Weekday</span>
+              </div>
+              <a href="#contact" class="course-card__link">Apply Now →</a>
+            </div>
+          </article>
+
+          <article class="course-card reveal reveal-delay-2">
+            <div class="course-card__thumb">
+              <img
+                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=75&auto=format&fit=crop"
+                alt="Graphic designer working on digital illustrations"
+                loading="lazy" width="600" height="338"
+              />
+            </div>
+            <div class="course-card__body">
+              <h3 class="course-card__title">Graphic Design</h3>
+              <p class="course-card__desc">Branding, illustration, print & digital media design with Photoshop, Illustrator & CorelDRAW — from basics to professional.</p>
+              <div class="course-card__meta">
+                <span>⏱ 6 Months</span>
+                <span>📅 Flexible Batches</span>
+              </div>
+              <a href="#contact" class="course-card__link">Apply Now →</a>
+            </div>
+          </article>
+
+          <article class="course-card reveal">
+            <div class="course-card__thumb">
+              <img
+                src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=600&q=75&auto=format&fit=crop"
+                alt="Game development screen showing 3D game environment"
+                loading="lazy" width="600" height="338"
+              />
+              <span class="course-card__badge">New Batch</span>
+            </div>
+            <div class="course-card__body">
+              <h3 class="course-card__title">Game Design & Development</h3>
+              <p class="course-card__desc">From concept to playable game — Unity, Unreal Engine, game mechanics, level design, and character development.</p>
+              <div class="course-card__meta">
+                <span>⏱ 12 Months</span>
+                <span>📅 Weekend / Weekday</span>
+              </div>
+              <a href="#contact" class="course-card__link">Apply Now →</a>
+            </div>
+          </article>
+
+          <article class="course-card reveal reveal-delay-1">
+            <div class="course-card__thumb">
+              <img
+                src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=75&auto=format&fit=crop"
+                alt="Professional digital photography and editing"
+                loading="lazy" width="600" height="338"
+              />
+            </div>
+            <div class="course-card__body">
+              <h3 class="course-card__title">Photography & Videography</h3>
+              <p class="course-card__desc">From DSLR basics to cinematic storytelling — lighting, composition, Adobe Premiere, and colour grading masterclass.</p>
+              <div class="course-card__meta">
+                <span>⏱ 6 Months</span>
+                <span>📅 Flexible Batches</span>
+              </div>
+              <a href="#contact" class="course-card__link">Apply Now →</a>
+            </div>
+          </article>
+
+          <article class="course-card reveal reveal-delay-2">
+            <div class="course-card__thumb">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75&auto=format&fit=crop"
+                alt="Digital marketing analytics dashboard"
+                loading="lazy" width="600" height="338"
+              />
+            </div>
+            <div class="course-card__body">
+              <h3 class="course-card__title">Digital Marketing</h3>
+              <p class="course-card__desc">SEO, social media strategy, Google Ads, content marketing & analytics. Become a certified growth marketer.</p>
+              <div class="course-card__meta">
+                <span>⏱ 3 Months</span>
+                <span>📅 Weekend Batches</span>
+              </div>
+              <a href="#contact" class="course-card__link">Apply Now →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ GALLERY ══════════════════════════════════════════════ -->
+    <section class="gallery" id="gallery" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Student Work</p>
+          <h2 class="section-title" id="gallery-heading">Where Talent<br>Comes to Life</h2>
+        </div>
+        <div class="gallery__grid" role="list" aria-label="Student portfolio gallery">
+          <div class="gal-item reveal" role="listitem">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&q=75&auto=format&fit=crop" alt="Student 3D art — abstract digital sculpture" loading="lazy" width="900" height="600"/>
+          </div>
+          <div class="gal-item reveal reveal-delay-1" role="listitem">
+            <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=600&q=75&auto=format&fit=crop" alt="Digital painting — vibrant colour splash artwork" loading="lazy" width="600" height="400"/>
+          </div>
+          <div class="gal-item reveal reveal-delay-2" role="listitem">
+            <img src="https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=75&auto=format&fit=crop" alt="Motion graphics frame — neon geometric shapes" loading="lazy" width="600" height="400"/>
+          </div>
+          <div class="gal-item reveal" role="listitem">
+            <img src="images/p1.png" alt="3D character design — stylized game character" loading="lazy" width="600" height="400"/>
+          </div>
+          <div class="gal-item reveal reveal-delay-1" role="listitem">
+            <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&q=75&auto=format&fit=crop" alt="Photography student work — dramatic portrait lighting" loading="lazy" width="600" height="400"/>
+          </div>
+          <div class="gal-item reveal reveal-delay-2" role="listitem">
+            <img src="https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=600&q=75&auto=format&fit=crop" alt="Brand identity design — minimalist logo concept" loading="lazy" width="600" height="400"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ABOUT ═════════════════════════════════════════════════ -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about__inner">
+          <div class="about__visual">
+            <div class="about__years" aria-label="20 years of excellence">
+              <div class="about__years-num">20+</div>
+              <div class="about__years-label">Years of<br>Excellence</div>
+            </div>
+            <div class="about__img-main">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80&auto=format&fit=crop"
+                alt="Students collaborating in a creative studio environment"
+                loading="lazy" width="700" height="875"
+              />
+            </div>
+            <div class="about__img-accent" aria-hidden="true">
+              <img
+                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&q=75&auto=format&fit=crop"
+                alt="Faculty mentoring animation students"
+                loading="lazy" width="500" height="375"
+              />
+            </div>
+          </div>
+          <div class="about__content">
+            <p class="section-label">About Us</p>
+            <h2 class="section-title" id="about-heading">More Than a<br>Classroom</h2>
+            <p class="section-desc">Arena Animation GTB Nagar has been Delhi's creative hub since 2004, empowering thousands of students to turn imagination into thriving careers.</p>
+            <ul class="about__list" aria-label="Key highlights">
+              <li class="about__list-item">Authorised Arena Animation Franchise under Aptech Ltd. — India's largest creative education network.</li>
+              <li class="about__list-item">Located in the heart of North Delhi — minutes from GTB Nagar Metro Station.</li>
+              <li class="about__list-item">Dedicated placement cell with active industry partnerships across India.</li>
+              <li class="about__list-item">Small batch sizes (max 20) ensuring individual attention for every student.</li>
+              <li class="about__list-item">Regular industry workshops, masterclasses & annual creative festivals.</li>
+            </ul>
+            <div class="about__actions">
+              <a href="#contact" class="btn-primary">Enquire Now →</a>
+              <a href="#gallery"  class="btn-outline">See Student Work</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TESTIMONIALS ══════════════════════════════════════════ -->
+    <section class="testimonials" aria-labelledby="testi-heading">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Alumni Stories</p>
+          <h2 class="section-title" id="testi-heading">Voices of Our<br>Graduates</h2>
+        </div>
+        <div class="testi__grid">
+
+          <article class="testi-card reveal">
+            <div class="testi-card__stars" aria-label="5 stars">★★★★★</div>
+            <div class="testi-card__quote" aria-hidden="true">"</div>
+            <p class="testi-card__text">The hands-on project approach here is unmatched. I walked out with a full portfolio and landed a role at a Mumbai VFX studio within two months of graduating.</p>
+            <div class="testi-card__author">
+              <img class="testi-card__avatar" src="https://i.pravatar.cc/88?img=11" alt="Portrait of Arjun Sharma" loading="lazy" width="44" height="44"/>
+              <div>
+                <div class="testi-card__name">Arjun Sharma</div>
+                <div class="testi-card__role">VFX Artist · Reliance Entertainment</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="testi-card reveal reveal-delay-1">
+            <div class="testi-card__stars" aria-label="5 stars">★★★★★</div>
+            <div class="testi-card__quote" aria-hidden="true">"</div>
+            <p class="testi-card__text">Arena GTB Nagar changed my life. The UI/UX programme was intense but rewarding — now I design products used by millions as a UX Lead at a Bangalore startup.</p>
+            <div class="testi-card__author">
+              <img class="testi-card__avatar" src="https://i.pravatar.cc/88?img=47" alt="Portrait of Priya Mehta" loading="lazy" width="44" height="44"/>
+              <div>
+                <div class="testi-card__name">Priya Mehta</div>
+                <div class="testi-card__role">UX Lead · Razorpay</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="testi-card reveal reveal-delay-2">
+            <div class="testi-card__stars" aria-label="5 stars">★★★★★</div>
+            <div class="testi-card__quote" aria-hidden="true">"</div>
+            <p class="testi-card__text">The faculty genuinely care. They stayed back after hours to help me fix my animation reel. That dedication is rare. I now freelance for international clients full-time.</p>
+            <div class="testi-card__author">
+              <img class="testi-card__avatar" src="https://i.pravatar.cc/88?img=33" alt="Portrait of Sahil Gupta" loading="lazy" width="44" height="44"/>
+              <div>
+                <div class="testi-card__name">Sahil Gupta</div>
+                <div class="testi-card__role">Freelance Motion Designer</div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT ═══════════════════════════════════════════════ -->
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact__inner">
+          <div class="contact__info">
+            <p class="section-label">Get in Touch</p>
+            <h2 class="section-title" id="contact-heading">Ready to Start<br>Your Journey?</h2>
+            <p class="section-desc">Walk in, call us, or fill out the form and our counsellors will get back to you within 24 hours.</p>
+            <div class="contact__info-items">
+              <div class="contact-info-item">
+                <div class="contact-info-item__icon" aria-hidden="true">📍</div>
+                <div>
+                  <div class="contact-info-item__label">Address</div>
+                  <div class="contact-info-item__val">38, 1st floor, Kingsway Camp, GTB Nagar,– 110009</div>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-item__icon" aria-hidden="true">📞</div>
+                <div>
+                  <div class="contact-info-item__label">Phone</div>
+                  <div class="contact-info-item__val"><a href="tel:+911145678900">+919811398844, +917827437052</a></div>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-item__icon" aria-hidden="true">✉️</div>
+                <div>
+                  <div class="contact-info-item__label">Email</div>
+                  <div class="contact-info-item__val"><a href="mailto:gtbnagar@arenaanimation.com">gtbnagar@arenaanimation.com</a></div>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-item__icon" aria-hidden="true">🕐</div>
+                <div>
+                  <div class="contact-info-item__label">Hours</div>
+                  <div class="contact-info-item__val">Mon – Sat: 9 AM – 7 PM</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Google Map -->
+            <div class="contact__map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1749.8206299175724!2d77.205186!3d28.700376000000002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfdee23a9f1fd%3A0x7eeb2fefc55b4be6!2sArena%20Animation%20-%20Best%20Animation%20Institute%20in%20Delhi!5e0!3m2!1sen!2sin!4v1777750895634!5m2!1sen!2sin"
+                width="100%"
+                height="300"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Arena Animation GTB Nagar location on Google Maps"
+                aria-label="Map showing Arena Animation GTB Nagar location"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="contact__form">
+            <h3 class="form__title">Free Counselling</h3>
+            <p class="form__sub">Book a free 30-min session with our academic counsellor.</p>
+            <form action="#" method="POST" novalidate aria-label="Contact form">
+              <div class="form__row">
+                <div class="form__group">
+                  <label class="form__label" for="f-name">First Name *</label>
+                  <input class="form__input" id="f-name" type="text" name="first_name" autocomplete="given-name" required placeholder="Rahul" />
+                </div>
+                <div class="form__group">
+                  <label class="form__label" for="f-lname">Last Name *</label>
+                  <input class="form__input" id="f-lname" type="text" name="last_name" autocomplete="family-name" required placeholder="Sharma" />
+                </div>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="f-email">Email *</label>
+                <input class="form__input" id="f-email" type="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="f-phone">Phone</label>
+                <input class="form__input" id="f-phone" type="tel" name="phone" autocomplete="tel" placeholder="+91 98765 43210" />
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="f-course">Interested Course</label>
+                <select class="form__select" id="f-course" name="course">
+                  <option value="">– Select a course –</option>
+                  <option>Animation &amp; VFX</option>
+                  <option>UI/UX Design</option>
+                  <option>Graphic Design</option>
+                  <option>Game Design &amp; Development</option>
+                  <option>Photography &amp; Videography</option>
+                  <option>Digital Marketing</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="f-msg">Message</label>
+                <textarea class="form__textarea" id="f-msg" name="message" placeholder="Any questions or preferred batch timing…"></textarea>
+              </div>
+              <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+                Send Enquiry →
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FAQ ══════════════════════════════════════════════════ -->
+  <section class="faq" id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="faq__head">
+        <p class="faq__label">Got Questions?</p>
+        <h2 class="faq__title" id="faq-heading">Frequently Asked<br><em>Questions</em></h2>
+        <p class="faq__desc">Everything you need to know before joining Arena Animation GTB Nagar.</p>
+      </div>
+      <div class="faq__list" role="list">
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-item__q" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
+            <span>What courses does Arena Animation GTB Nagar offer?</span>
+            <span class="faq-item__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item__a" id="faq-a1" role="region" aria-labelledby="faq-q1" hidden>
+            <p>Arena Animation GTB Nagar offers a wide range of creative programmes including <strong>Animation, VFX (Visual Effects), Video Editing, Game Design, Web Design, Graphic Design, UI/UX Design,</strong> and <strong>Digital Marketing</strong> — designed to transform your creative passion into a professional career.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-1" role="listitem">
+          <button class="faq-item__q" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+            <span>What is the duration of the courses?</span>
+            <span class="faq-item__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item__a" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden>
+            <p>Course durations vary depending on the programme. <strong>Short Term programmes</strong> may range from 1 month to 1 year, while <strong>advanced career courses</strong> like Animation & VFX can be longer. For exact timings and batch schedules, please contact the GTB Nagar centre directly.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-2" role="listitem">
+          <button class="faq-item__q" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+            <span>What are all the courses available at Arena Animation?</span>
+            <span class="faq-item__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item__a" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden>
+            <p>Arena Animation GTB Nagar offers the following programme categories:</p>
+            <ul class="faq-item__list">
+              <li>2D and 3D Animation</li>
+              <li>VFX (Visual Effects)</li>
+              <li>Gaming / AR-VR</li>
+              <li>Video Editing &amp; Motion Graphics</li>
+              <li>Web &amp; Graphics</li>
+              <li>UI-UX Design</li>
+              <li>Digital Design &amp; Marketing</li>
+              <li>Multimedia</li>
+              <li>Short Term Courses</li>
+              <li>Fast Track Courses</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-item__q" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+            <span>What is the fee structure for the courses?</span>
+            <span class="faq-item__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item__a" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden>
+            <p>Fees depend on the specific course and its duration. It is best to <strong>visit the GTB Nagar centre directly</strong> for a detailed fee breakdown, available EMI options, and any ongoing scholarships or discounts. You may also call us or fill out the contact form above.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-1" role="listitem">
+          <button class="faq-item__q" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
+            <span>Does Arena GTB Nagar offer a degree in Animation and VFX?</span>
+            <span class="faq-item__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item__a" id="faq-a5" role="region" aria-labelledby="faq-q5" hidden>
+            <p>Great question! Yes — Arena Animation does offer a <strong>B.Voc in VFX Film Making &amp; Animation</strong> as a Skilling Partner. This is a formal vocational degree programme that combines industry skills with academic recognition.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-2" role="listitem">
+          <button class="faq-item__q" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">
+            <span>Are there any placement opportunities or assistance provided?</span>
+            <span class="faq-item__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item__a" id="faq-a6" role="region" aria-labelledby="faq-q6" hidden>
+            <p>Absolutely. Arena GTB Nagar provides <strong>placement assistance and career guidance</strong> as part of all career courses. Most students find placement <em>before</em> completing their programme. The centre has a dedicated <strong>Placement Cell</strong> with tie-ups across multiple studios and companies in the creative industry.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-item__q" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">
+            <span>What facilities are available at the center?</span>
+            <span class="faq-item__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item__a" id="faq-a7" role="region" aria-labelledby="faq-q7" hidden>
+            <p>Arena GTB Nagar is equipped with world-class facilities including:</p>
+            <ul class="faq-item__list">
+              <li>Modern <strong>Classrooms</strong> and <strong>Computer Labs</strong> with all relevant software</li>
+              <li>Dedicated <strong>Gaming Zone</strong></li>
+              <li>Digital Study Material &amp; LMS access</li>
+              <li><strong>Auditorium</strong> for events and screenings</li>
+              <li>Sketching &amp; Clay Modelling studio</li>
+              <li><strong>Chroma Studio</strong> with professional lighting setup</li>
+            </ul>
+            <p style="margin-top:.75rem">Visit the centre or contact us directly to see it for yourself!</p>
+          </div>
+        </div>
+
+      </div><!-- /.faq__list -->
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/0/08/Arena_Animation_logo.png/250px-Arena_Animation_logo.png"
+              alt="Arena Animation logo"
+              height="32" loading="lazy"
+              onerror="this.style.display='none'"
+            />
+            <span class="footer__logo-text">ARENA ANIMATION GTB NAGAR</span>
+          </div>
+          <p class="footer__tagline">Delhi's premier institute for animation, design &amp; digital media education. Empowering creatives since 2004.</p>
+          <nav class="footer__social" aria-label="Social media links">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">in</a>
+            <a href="#" aria-label="YouTube">▶</a>
+            <a href="#" aria-label="LinkedIn">li</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Courses</h4>
+          <nav class="footer__links" aria-label="Courses footer navigation">
+            <a href="#courses">Animation &amp; VFX</a>
+            <a href="#courses">UI/UX Design</a>
+            <a href="#courses">Graphic Design</a>
+            <a href="#courses">Game Design</a>
+            <a href="#courses">Photography</a>
+            <a href="#courses">Digital Marketing</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Institute</h4>
+          <nav class="footer__links" aria-label="Institute footer navigation">
+            <a href="#about">About Us</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact">Admissions</a>
+            <a href="#contact">Placements</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Contact</h4>
+          <div class="footer__links" style="gap:.85rem">
+            <span style="font-size:.85rem; line-height:1.6">Vijay Nagar, GTB Nagar<br>Delhi – 110009</span>
+            <a href="tel:+911145678900">+91 11 4567 8900</a>
+            <a href="mailto:gtbnagar@arenaanimation.com">gtbnagar@arenaanimation.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Arena Animation GTB Nagar. All rights reserved.</span>
+        <div style="display:flex;gap:1.5rem">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══════════════════════════════════════════════ -->
+  <script>
+    /* —— Mobile menu —— */
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+      hamburger.setAttribute('aria-label', expanded ? 'Open mobile menu' : 'Close mobile menu');
+      mobileMenu.classList.toggle('is-open', !expanded);
+      mobileMenu.setAttribute('aria-hidden', String(expanded));
+      document.body.style.overflow = expanded ? '' : 'hidden';
+    });
+
+    function closeMobileMenu() {
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open mobile menu');
+      mobileMenu.classList.remove('is-open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    /* —— FAQ accordion —— */
+    document.querySelectorAll('.faq-item__q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+
+        // Close all others
+        document.querySelectorAll('.faq-item__q').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          document.getElementById(b.getAttribute('aria-controls')).hidden = true;
+        });
+
+        // Toggle clicked
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          panel.hidden = false;
+        }
+      });
+    });
+
+    /* Close on Escape */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) closeMobileMenu();
+    });
+
+    /* —— Scroll reveal —— */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    revealEls.forEach(el => observer.observe(el));
+
+    /* —— Active nav link —— */
+    const sections = document.querySelectorAll('section[id], main[id]');
+    const navLinks = document.querySelectorAll('.nav__links a');
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(l => l.removeAttribute('aria-current'));
+          const active = document.querySelector(`.nav__links a[href="#${e.target.id}"]`);
+          if (active) active.setAttribute('aria-current', 'page');
+        }
+      });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+    sections.forEach(s => sectionObserver.observe(s));
+  </script>
+
+</body>
+</html>
